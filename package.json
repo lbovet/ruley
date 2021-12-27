@@ -1,0 +1,32 @@
+{
+  "name": "rulya",
+  "version": "1.0.4",
+  "description": "Apply rules for semantic validation of YAML files",
+  "main": "index.js",
+  "scripts": {
+    "test": "jasmine --helper=index.js index.spec.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lbovet/rulya.git"
+  },
+  "keywords": [
+    "yaml",
+    "validation",
+    "rules"
+  ],
+  "author": "Laurent Bovet",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/lbovet/rulya/issues"
+  },
+  "homepage": "https://github.com/lbovet/rulya#readme",
+  "dependencies": {
+    "@segment/ajv-human-errors": "^2.0.2",
+    "ajv": "6.10.2",
+    "glob": "7.2.0",
+    "jasmine": "3.10.0",
+    "request": "2.88.2",
+    "yaml": "1.10.2"
+  }
+}

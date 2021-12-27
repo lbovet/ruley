@@ -1,0 +1,18 @@
+{
+    "$id": "https://example.com/article.schema.json",
+    "title": "Article",
+    "type": "object",
+    "properties": {
+        "title": {
+            "type": "string",
+            "description": "Mandatory title"
+        },
+        "text": {
+            "type": "string",
+            "description": "Optional text"
+        }
+    },
+    "required": [
+        "title"
+    ]
+}

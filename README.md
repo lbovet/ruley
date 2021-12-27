@@ -1,5 +1,7 @@
 # Rulya
 
+![npm](https://img.shields.io/npm/v/rulya)
+
 Helps you define and apply semantic validation to a collection of YAML files. Typically used as pre-commit hook or CI/CD build step.
 
 ## Usage

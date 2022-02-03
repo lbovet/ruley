@@ -1,6 +1,7 @@
 const fs = require('fs');
 const YAML = require('yaml');
 const glob = require('glob');
+const traverse = require('traverse');
 const ajv = new require("ajv")({
     jsonPointers: true,
     allErrors: true,
@@ -70,6 +71,11 @@ schema = (reference, doc) => {
             var validateDocument = (schema, doc) => {
                 if (schema) {
                     delete schema.$schema;
+                    traverse(schema).forEach(function() {
+                        if(this.key === 'id' || this.key === '$id') {
+                            this.remove();
+                        }
+                    });
                     try {
                         const validate = ajv.compile(schema)
                         if (!validate(doc.original)) {

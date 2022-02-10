@@ -1,6 +1,6 @@
 {
   "name": "rulya",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Apply rules for semantic validation of YAML files",
   "main": "index.js",
   "scripts": {

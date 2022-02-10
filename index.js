@@ -123,5 +123,6 @@ property = (name, value, callback) =>
         : describe("> '" + name + "'", () => callback(value));
 
 rule = (name, value, expectation, callback) =>
-    (!value || !value.skip || value.skip.indexOf(name) == -1) &&
-    it(expectation + "\n   ignore with '# skip(" + name + ")'", () => callback(value));
+    (!value || !value.skip || value.skip.indexOf(name) == -1) ?
+    it(expectation + "\n   ignore with '# skip(" + name + ")'", () => callback(value)) :
+    it(expectation + " [SKIPPED]", ()=>{})

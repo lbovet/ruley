@@ -23,7 +23,7 @@
   "homepage": "https://github.com/lbovet/rulya#readme",
   "dependencies": {
     "@segment/ajv-human-errors": "^2.0.2",
-    "ajv": "6.10.2",
+    "ajv": "6.12.6",
     "glob": "7.2.0",
     "jasmine": "3.10.0",
     "request": "2.88.2",

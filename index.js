@@ -52,16 +52,28 @@ _create = node => {
 };
 
 _parse = (doc, path) => {
-    var contents = YAML.parseDocument(doc).contents
-    path = new String(path)
-    path.skip = _skipList(doc.split("\n")[0]);
-    return [Object.assign({ original: contents.toJSON(), skip: name => path.skip.indexOf(name) != -1 }, _create(contents)), path]
+    try {
+        var contents = YAML.parseDocument(doc).contents
+        if(contents) {
+            path = new String(path)
+            path.skip = _skipList(doc.split("\n")[0]);
+            return [Object.assign({ original: contents.toJSON(), skip: name => path.skip.indexOf(name) != -1 }, _create(contents)), path]
+        } else {
+            it("must not be empty", fail);
+        }
+    } catch(error) {
+        it("must be a well-formed YAML document", fail);
+    }
 };
 
 documents = (pattern, callback) =>
     glob.sync(pattern).forEach(path =>
-        describe("'" + path + "'", () =>
-            callback(..._parse(fs.readFileSync(path, 'utf8'), path))));
+        describe("'" + path + "'", () => {
+            var parsed = _parse(fs.readFileSync(path, 'utf8'), path);
+            if(parsed) {
+                callback(...parsed);
+            }
+        }));
 
 _schemaCache = {};
 
